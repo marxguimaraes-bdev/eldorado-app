@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CreateDeviceComponent } from './create-device/create-device.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CreateDeviceComponent } from './create-device/create-device.component';
     DeviceListComponent,
     CategoryListComponent,
     CreateDeviceComponent,
+    CreateCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { CreateDeviceComponent } from './create-device/create-device.component';
       {path: 'devices', component: DeviceListComponent},
       {path: 'categories', component: CategoryListComponent},
       {path: 'create-device', component: CreateDeviceComponent},
+      {path: 'create-category', component: CreateCategoryComponent},
       {path: '', redirectTo: '/devices', pathMatch: 'full'},
     ]),
   ],
