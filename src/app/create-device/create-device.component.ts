@@ -10,6 +10,8 @@ import { ApiService } from "../shared/api.service";
 })
 export class CreateDeviceComponent implements OnInit {
 
+  categories: any = []
+
   @Input() newDevice = { color: '', categoryId: '', partNumber: '' }
 
   constructor(
@@ -17,11 +19,19 @@ export class CreateDeviceComponent implements OnInit {
     public router: Router,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.loadCategories();
+  }
 
   createDevice() {
     this.api.createDevice(this.newDevice).subscribe((data: {}) => {
       this.router.navigate(['/devices']);
+    });
+  }
+
+  loadCategories() {
+    return this.api.getAllCategories().subscribe((data: {}) => {
+      this.categories = data;
     });
   }
 }
