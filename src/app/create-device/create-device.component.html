@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>Create device</h3>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="newDevice.color" class="form-control" placeholder="Color">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="newDevice.categoryId" class="form-control" placeholder="Category">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="newDevice.partNumber" class="form-control" placeholder="Part Number">
+  </div>
+
+  <div class="form-group">
+    <button class="btn save" (click)="createDevice()">Save</button>
+  </div>
+</div>

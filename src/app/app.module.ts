@@ -2,25 +2,30 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { CreateDeviceComponent } from './create-device/create-device.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeviceListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CreateDeviceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: 'devices', component: DeviceListComponent},
       {path: 'categories', component: CategoryListComponent},
+      {path: 'create-device', component: CreateDeviceComponent},
       {path: '', redirectTo: '/devices', pathMatch: 'full'},
     ]),
   ],
