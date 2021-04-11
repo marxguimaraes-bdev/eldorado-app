@@ -1,6 +1,6 @@
 export class Device {
   id: number;
   color: string;
-  categoryId;
+  category: string;
   portNumber: number;
 };

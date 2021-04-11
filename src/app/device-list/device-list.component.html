@@ -22,7 +22,7 @@
         <tr *ngFor="let device of devices">
           <td>{{ device.id }}</td>
           <td>{{ device.color }}</td>
-          <td>{{ device.categoryId }}</td>
+          <td>{{ device.category }}</td>
           <td>{{ device.partNumber }}</td>
           <td>
             <span class="btn delete" (click)="deleteDevice(device.id)">Delete</span>
