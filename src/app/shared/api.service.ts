@@ -96,13 +96,11 @@ export class ApiService {
   }
 
   handleError(error) {
-    let errorMessage = '';
+    let errorMessage = 'Something went wrong';
     if(error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      errorMessage = `API return an error:
-        Code: ${error.status}
-        Message: ${error.message}`;
+      errorMessage = error.error || error.message;
     }
     window.alert(errorMessage);
     return throwError(errorMessage);
