@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ApiService } from "../shared/api.service";
@@ -10,18 +11,31 @@ import { ApiService } from "../shared/api.service";
 })
 export class CreateCategoryComponent implements OnInit {
 
-  @Input() newCategory = { name: '' }
+  categoryForm: FormGroup;
 
   constructor(
     public api: ApiService,
     public router: Router,
+    public formBuilder: FormBuilder,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.categoryForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+    });
+  }
 
   createCategory() {
-    this.api.createCategory(this.newCategory).subscribe((data: {}) => {
-      this.router.navigate(['/categories']);
-    });
+    if (this.categoryForm.valid) {
+      this.api.createCategory(this.categoryForm.value).subscribe((data: {}) => {
+        this.router.navigate(['/categories']);
+      });
+    } else {
+      window.alert('Name is required');
+    }
+  }
+
+  get controls(){
+    return this.categoryForm.controls;
   }
 }
