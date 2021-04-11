@@ -1,2 +1,38 @@
-<h3>DEVICE LIST</h3>
-<p>See your devices here</p>
+<div class="container">
+  <!-- No devices -->
+  <div class="no-data" *ngIf="devices.length == 0">
+    <p>Looks like you don't have any devices!</p>
+    <button class="btn create" routerLink="/create-device">Create device</button>
+  </div>
+
+  <!-- At least one device -->
+  <div *ngIf="devices.length !== 0">
+    <h3>Device List</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Device Id</th>
+          <th scope="col">Color</th>
+          <th scope="col">Category</th>
+          <th scope="col">Part Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of devices">
+          <td>{{ device.id }}</td>
+          <td>{{ device.color }}</td>
+          <td>{{ device.categoryId }}</td>
+          <td>{{ device.partNumber }}</td>
+          <td>
+            <span class="btn delete" (click)="deleteDevice(device.id)">Delete</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <button class="btn create" routerLink="/create-device">Create device</button>
+    </div>
+  </div>
+</div>
