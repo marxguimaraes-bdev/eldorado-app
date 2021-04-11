@@ -1,12 +1,16 @@
 <div class="container">
   <!-- No devices -->
-  <div class="no-data" *ngIf="devices.length == 0">
+  <div class="no-data" *ngIf="!isLoading && devices.length == 0">
     <p>Looks like you don't have any devices!</p>
     <button class="btn create" routerLink="/create-device">Create device</button>
   </div>
 
+  <div class="loading" *ngIf="isLoading">
+    <p>Loading your devices...</p>
+  </div>
+
   <!-- At least one device -->
-  <div *ngIf="devices.length !== 0">
+  <div *ngIf="!isLoading && devices.length !== 0">
     <h3>Device List</h3>
 
     <table class="table">

@@ -10,6 +10,7 @@ import { ApiService } from "../shared/api.service";
 export class DeviceListComponent implements OnInit {
 
   devices: any = [];
+  isLoading = false;
 
   constructor(public api: ApiService) {}
 
@@ -18,8 +19,11 @@ export class DeviceListComponent implements OnInit {
   }
 
   loadDevices() {
+    this.isLoading = true;
+
     return this.api.getAllDevices().subscribe((data: {}) => {
       this.devices = data;
+      this.isLoading = false;
     });
   }
 

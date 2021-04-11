@@ -1,12 +1,16 @@
 <div class="container">
     <!-- No categories -->
-    <div class="no-data" *ngIf="categories.length == 0">
+    <div class="no-data" *ngIf="!isLoading && categories.length == 0">
       <p>Looks like you don't have any categories!</p>
       <button class="btn create" routerLink="/create-category">Create category</button>
     </div>
 
+    <div class="loading" *ngIf="isLoading">
+      <p>Loading your categories...</p>
+    </div>
+
     <!-- At least one category -->
-    <div *ngIf="categories.length !== 0">
+    <div *ngIf="!isLoading && categories.length !== 0">
       <h3>Category List</h3>
 
       <table class="table">

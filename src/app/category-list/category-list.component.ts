@@ -10,6 +10,8 @@ import { ApiService } from "../shared/api.service";
 export class CategoryListComponent implements OnInit {
 
   categories: any = [];
+  isLoading = false;
+
 
   constructor(public api: ApiService) {}
 
@@ -18,8 +20,11 @@ export class CategoryListComponent implements OnInit {
   }
 
   loadCategories() {
+    this.isLoading = true;
+
     return this.api.getAllCategories().subscribe((data: {}) => {
       this.categories = data;
+      this.isLoading = false;
     });
   }
 
